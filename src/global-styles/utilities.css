@@ -1,0 +1,49 @@
+/* color */
+
+.clr-neutral-100 {
+  color: var(--clr-neutral-100);
+}
+
+.clr-neutral-900 {
+  color: var(--clr-neutral-900);
+}
+
+/* background color */
+
+.bg-neutral-100 {
+  background-color: var(--clr-neutral-100);
+}
+
+.bg-neutral-900 {
+  background-color: var(--clr-neutral-900);
+}
+
+/* font family */
+
+.ff-sans {
+  font-family: var(--ff-sans, var(--ff-system-sans));
+}
+
+/* font size */
+
+.fs-400 {
+  font-size: var(--fs-400, 1rem);
+}
+
+.fs-600 {
+  font-size: var(--fs-600);
+}
+
+/* font weight */
+
+.fw-regular {
+  font-weight: 400;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.fw-bold {
+  font-weight: 700;
+}

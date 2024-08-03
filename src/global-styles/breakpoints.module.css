@@ -1,0 +1,3 @@
+@value tablet-and-up: min-width: 34.375rem;
+@value laptop-and-up: min-width: 68.75rem;
+@value desktop-and-up: min-width: 93.75rem;

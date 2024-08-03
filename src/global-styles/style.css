@@ -1,0 +1,5 @@
+body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-400);
+  background-color: var(--clr-neutral-100);
+}

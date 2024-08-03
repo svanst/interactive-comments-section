@@ -5,7 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interactive comments section</title>
     <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
-    <script src="script.jsx" defer type="module"></script>
+    <style>
+      /* rubik-regular - latin */
+      @font-face {
+        font-display: fallback;
+        font-family: "Rubik";
+        font-style: normal;
+        font-weight: 400;
+        src: url("src/assets/fonts/rubik-v28-latin-regular.woff2")
+          format("woff2");
+      }
+      /* rubik-500 - latin */
+      @font-face {
+        font-display: fallback;
+        font-family: "Rubik";
+        font-style: normal;
+        font-weight: 500;
+        src: url("src/assets/fonts/rubik-v28-latin-500.woff2") format("woff2");
+      }
+      /* rubik-700 - latin */
+      @font-face {
+        font-display: fallback;
+        font-family: "Rubik";
+        font-style: normal;
+        font-weight: 700;
+        src: url("src/assets/fonts/rubik-v28-latin-700.woff2") format("woff2");
+      }
+    </style>
+    <script src="src/script.jsx" defer type="module"></script>
   </head>
   <body>
     <div id="root"></div>
