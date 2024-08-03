@@ -105,3 +105,9 @@
 .fw-bold {
   font-weight: 700;
 }
+
+/* font style */
+
+.font-style-normal {
+  font-style: normal;
+}

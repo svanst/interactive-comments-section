@@ -5,31 +5,26 @@ import Button from "../Button/Button";
 import { IconMinus, IconPlus } from "../Icon/Icon";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
-function Rating() {
-  const [value, setValue] = useState(0);
-
-  const increase = () => setValue(value + 1);
-  const decrease = () => setValue(Math.max(value - 1, 0));
-
+function Rating({ className, rating, increaseRating, decreaseRating }) {
   return (
-    <div className={`bg-neutral-400 ${styles.wrapper}`}>
+    <div className={`bg-neutral-400 ${styles.wrapper} ${className}`}>
       <Button
         aria-label="increase rating"
         variant="icon"
         color="primary-light"
-        onClick={increase}
+        onClick={() => increaseRating(rating.id)}
       >
         <IconPlus />
       </Button>
       <span className="clr-primary fw-bold">
         <VisuallyHidden>Rating</VisuallyHidden>
-        {value}
+        {rating.score}
       </span>
       <Button
         aria-label="decrease rating"
         variant="icon"
         color="primary-light"
-        onClick={decrease}
+        onClick={() => decreaseRating(rating.id)}
       >
         <IconMinus />
       </Button>

@@ -1,0 +1,51 @@
+@value tablet-and-up from '/src/global-styles/breakpoints.module.css';
+
+.comment {
+  display: grid;
+  justify-items: start;
+  padding: clamp(16px, 4vw, 24px);
+  column-gap: 24px;
+  row-gap: 16px;
+  border-radius: 8px;
+
+  grid-template-areas:
+    "attribution attribution"
+    "content     content"
+    "rating      actions ";
+
+  @media (tablet-and-up) {
+    grid-template-areas:
+      "rating attribution actions"
+      "rating content     content";
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+  }
+}
+
+.attribution {
+  grid-area: attribution;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.content {
+  grid-area: content;
+}
+
+.rating {
+  grid-area: rating;
+}
+
+.actions {
+  grid-area: actions;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}

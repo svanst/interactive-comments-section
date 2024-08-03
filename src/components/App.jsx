@@ -9,6 +9,8 @@ import {
   IconReply,
 } from "./Icon/Icon";
 import Rating from "./Rating/Rating";
+import Comment from "./Comment/Comment";
+import CommentList from "./CommentList/CommentList";
 
 export default function App() {
   return (
@@ -17,12 +19,8 @@ export default function App() {
         <VisuallyHidden asChild>
           <h1>Interactive comments section</h1>
         </VisuallyHidden>
-        <Rating />
+        <CommentList />
       </MaxWidthWrapper>
     </main>
   );
 }
-
-const styles = {
-  test: "test",
-};
