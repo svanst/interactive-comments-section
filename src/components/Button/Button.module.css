@@ -1,0 +1,101 @@
+.btn {
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+/* variant */
+
+.btn--fill {
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+}
+
+.btn--ghost {
+  background-color: transparent;
+}
+
+.btn--icon {
+  background-color: transparent;
+  padding: 0.5em;
+}
+
+/* color */
+
+.btn--primary {
+  background-color: var(--clr-primary);
+  color: var(--clr-neutral-100);
+
+  &:hover {
+    background-color: var(--clr-primary--light);
+  }
+
+  &:is(.btn--ghost, .btn--icon) {
+    color: var(--clr-primary);
+
+    &:hover {
+      color: var(--clr-primary--light);
+    }
+  }
+}
+
+.btn--primary-light {
+  background-color: var(--clr-primary--light);
+  color: var(--clr-neutral-100);
+
+  &:is(.btn--ghost, .btn--icon) {
+    color: var(--clr-primary--light);
+
+    &:hover {
+      color: var(--clr-primary);
+    }
+  }
+
+  &:hover {
+    background-color: var(--clr-primary);
+  }
+}
+
+.btn--neutral {
+  background-color: var(--clr-neutral-600);
+  color: var(--clr-neutral-100);
+
+  &:is(.btn--ghost, .btn--icon) {
+    color: var(--clr-neutral-600);
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.btn--danger {
+  background-color: var(--clr-danger);
+  color: var(--clr-neutral-100);
+
+  &:where(.btn--ghost, .btn--icon) {
+    color: var(--clr-danger);
+
+    &:hover {
+      color: var(--clr-danger--light);
+    }
+  }
+
+  &:hover {
+    background-color: var(--clr-danger--light);
+  }
+}
+
+/* set the background color back to transparent for ghost and icon variants that have a color variant class in addition to the color class */
+.btn--ghost,
+.btn--icon {
+  background-color: transparent;
+
+  &:hover {
+    background-color: transparent;
+  }
+}

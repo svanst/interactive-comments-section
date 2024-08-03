@@ -14,9 +14,9 @@
   --clr-neutral-900: hsl(0deg 0% 0%);
 
   --clr-primary: hsl(238, 40%, 52%);
-  --clr-primary-light: hsl(239, 57%, 85%);
+  --clr-primary--light: hsl(239, 57%, 85%);
   --clr-danger: hsl(358, 79%, 66%);
-  --clr-danger-light: hsl(357, 100%, 86%);
+  --clr-danger--light: hsl(357, 100%, 86%);
 
   --fs-400: 1rem;
   --fs-600: calc(20 / 16 * 1rem);
