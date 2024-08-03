@@ -1,0 +1,13 @@
+@value tablet-and-up from '/src/global-styles/breakpoints.module.css';
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  border-radius: 10px;
+
+  @media (tablet-and-up) {
+    flex-direction: column;
+  }
+}
