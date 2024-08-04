@@ -1,23 +1,25 @@
+import { getComment } from "../helpers/comment.helpers";
+import { produce } from "immer";
+
 export const actions = {
   increase: "increase",
   decrease: "decrease",
 };
 
 export const commentsReducer = (comments, action) => {
-  switch (action.type) {
-    case actions.increase:
-      return comments.map((comment) =>
-        comment.id === action.id
-          ? { ...comment, score: comment.score + 1 }
-          : comment
-      );
-    case actions.decrease:
-      return comments.map((comment) =>
-        comment.id === action.id
-          ? { ...comment, score: Math.max(comment.score - 1, 0) }
-          : comment
-      );
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
-  }
+  return produce(comments, (draft) => {
+    const comment = getComment(draft, action.id);
+    if (!comment) return;
+
+    switch (action.type) {
+      case actions.increase:
+        comment.score = comment.score + 1;
+        break;
+      case actions.decrease:
+        comment.score = Math.max(comment.score - 1, 0);
+        break;
+      default:
+        throw new Error(`Unhandled action type: ${action.type}`);
+    }
+  });
 };

@@ -49,3 +49,20 @@
   align-items: center;
   gap: 24px;
 }
+
+.replies {
+  margin-top: clamp(1rem, 4vw, 1.25rem);
+  position: relative;
+  padding-left: 88px;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 2px;
+    top: 0;
+    bottom: 0;
+    left: 43px;
+    background-color: var(--clr-neutral-400);
+  }
+}

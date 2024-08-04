@@ -3,29 +3,32 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write \"**/*.{js,jsx}\"",
-    "lint": "eslint \"**/*.{js,jsx}\" --quiet"
+    "lint": "eslint \"**/*.{js,jsx}\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.55.0",
+    "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.33.2",
-    "vite": "^5.0.6"
+    "eslint-import-resolver-node": "^0.3.9",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "vite": "^5.3.5"
   },
   "dependencies": {
     "@radix-ui/react-visually-hidden": "^1.1.0",
+    "@vitejs/plugin-react": "^4.3.1",
     "classnames": "^2.5.1",
+    "immer": "^10.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

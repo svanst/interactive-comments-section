@@ -2,7 +2,7 @@ import styles from "./Rating.module.css";
 
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { useContext } from "react";
-import { CommentsContext } from "../../contexts/CommentsContext";
+import { CommentsContext } from "../../contexts/commentsContext";
 import Button from "../Button/Button";
 import { IconMinus, IconPlus } from "../Icon/Icon";
 

@@ -1,36 +1,33 @@
 module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
   extends: [
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
     "prettier",
   ],
-  rules: {
-    "react/prop-types": 0,
-    "react/react-in-jsx-scope": 0,
-  },
-  plugins: ["react", "import", "jsx-a11y"],
-  parserOptions: {
-    ecmaVersion: 2022,
-    sourceType: "module",
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
-  env: {
-    es6: true,
-    browser: true,
-    node: true,
-  },
+  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  parserOptions: { ecmaVersion: "latest", sourceType: "module" },
   settings: {
-    react: {
-      version: "detect",
-    },
+    react: { version: "18.2" },
     "import/resolver": {
       node: {
-        extensions: [".js", ".jsx"],
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
       },
     },
+  },
+  plugins: ["react", "react-refresh", "import", "jsx-a11y"],
+  rules: {
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-no-target-blank": "off",
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
   },
 };

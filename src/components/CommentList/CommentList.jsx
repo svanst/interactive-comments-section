@@ -1,13 +1,8 @@
+import Comment from "../Comment/Comment";
+import MaxWidthWrapper from "../MaxWidthWrapper/MaxWidthWrapper";
 import styles from "./CommentList.module.css";
 
-import Comment from "../Comment/Comment";
-
-import { useContext } from "react";
-import { CommentsContext } from "../../contexts/CommentsContext";
-
-function CommentList() {
-  const { comments } = useContext(CommentsContext);
-
+function CommentList({ comments }) {
   return (
     <ul className={styles.comments}>
       {comments.map(({ id, user, content, createdAt, score }) => (
