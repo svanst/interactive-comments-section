@@ -1,16 +1,17 @@
 import { useContext } from "react";
 import { CommentsContext } from "../../contexts/commentsContext";
 import { getImage } from "../../helpers/image.helpers";
-import Button from "../Button/Button";
-import { IconReply } from "../Icon/Icon";
+import CommentList from "../CommentList/CommentList";
+
 import Rating from "../Rating/Rating";
 import styles from "./Comment.module.css";
-import CommentList from "../CommentList/CommentList";
+import ButtonRow from "../ButtonRow/ButtonRow";
 
 const getAvatarSrc = (path) => path.replace("./images/avatars/", "");
 
 function Comment({ commentID, author, date, content, avatar, rating }) {
   const { getReplies } = useContext(CommentsContext);
+
   const replies = getReplies(commentID);
 
   const avatarSrc = {
@@ -37,20 +38,7 @@ function Comment({ commentID, author, date, content, avatar, rating }) {
           commentID={commentID}
           className={styles.rating}
         />
-        <div className={styles.actions}>
-          {/* <Button variant="ghost" color="danger">
-          <IconDelete />
-          Delete
-        </Button>
-        <Button variant="ghost">
-          <IconEdit />
-          Edit
-        </Button> */}
-          <Button variant="ghost">
-            <IconReply />
-            Reply
-          </Button>
-        </div>
+        <ButtonRow author={author} />
       </div>
 
       {replies.length > 0 && (

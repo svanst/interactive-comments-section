@@ -1,7 +1,6 @@
 import { createContext, useReducer } from "react";
 import { actions, commentsReducer } from "../reducers/commentsReducer";
-
-import commentsJSON from "../data/data.json";
+import { getComments } from "../helpers/data.helpers";
 import { getComment } from "../helpers/comment.helpers";
 
 const CommentsContext = createContext();
@@ -9,7 +8,8 @@ const CommentsContext = createContext();
 const CommentsProvider = ({ children }) => {
   const [comments, dispatch] = useReducer(
     commentsReducer,
-    commentsJSON.comments
+    undefined,
+    getComments
   );
 
   const increaseRating = (id) =>
