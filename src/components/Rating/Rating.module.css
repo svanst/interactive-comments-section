@@ -1,4 +1,4 @@
-@value tablet-and-up from '/src/global-styles/breakpoints.module.css';
+@value tablet-and-up from '/src/styles/breakpoints.module.css';
 
 .wrapper {
   display: inline-flex;

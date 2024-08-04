@@ -6,15 +6,7 @@ import styles from "./Comment.module.css";
 
 const getAvatarSrc = (path) => path.replace("./images/avatars/", "");
 
-function Comment({
-  author,
-  date,
-  content,
-  rating,
-  avatar,
-  increaseRating,
-  decreaseRating,
-}) {
+function Comment({ commentID, author, date, content, avatar, rating }) {
   const avatarSrc = {
     png: getAvatarSrc(avatar.png),
     webp: getAvatarSrc(avatar.webp),
@@ -33,12 +25,7 @@ function Comment({
         <time dateTime="">{date}</time>
       </div>
       <p className={styles.content}>{content}</p>
-      <Rating
-        rating={rating}
-        increaseRating={increaseRating}
-        decreaseRating={decreaseRating}
-        className={styles.rating}
-      />
+      <Rating score={rating} commentID={commentID} className={styles.rating} />
       <div className={styles.actions}>
         {/* <Button variant="ghost" color="danger">
           <IconDelete />
