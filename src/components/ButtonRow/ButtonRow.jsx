@@ -5,8 +5,9 @@ import { IconDelete, IconEdit, IconReply } from "../Icon/Icon";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
 import { useContext } from "react";
 import { CommentsContext } from "../../contexts/commentsContext";
+import { modes } from "../Comment/modes";
 
-function ButtonRow({ author, commentID, toggleEditMode }) {
+function ButtonRow({ author, commentID, mode, changeMode }) {
   const { deleteComment } = useContext(CommentsContext);
   const { currentUser } = useContext(CurrentUserContext);
 
@@ -23,13 +24,23 @@ function ButtonRow({ author, commentID, toggleEditMode }) {
             <IconDelete />
             Delete
           </Button>
-          <Button variant="ghost" onClick={toggleEditMode}>
+          <Button
+            variant="ghost"
+            onClick={() =>
+              changeMode(mode === modes.read ? modes.edit : modes.read)
+            }
+          >
             <IconEdit />
             Edit
           </Button>
         </>
       ) : (
-        <Button variant="ghost">
+        <Button
+          variant="ghost"
+          onClick={() =>
+            changeMode(mode === modes.read ? modes.reply : modes.read)
+          }
+        >
           <IconReply />
           Reply
         </Button>

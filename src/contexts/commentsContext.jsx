@@ -23,7 +23,8 @@ const CommentsProvider = ({ children }) => {
     dispatch({ type: actions.update, comments, content, id });
   const onCreateComment = (content) =>
     dispatch({ type: actions.create, comments, content, user });
-
+  const onReply = (parentCommentID, content) =>
+    dispatch({ type: actions.reply, comments, content, user, parentCommentID });
   const deleteComment = (id) =>
     dispatch({ type: actions.delete, comments, id });
 
@@ -38,6 +39,7 @@ const CommentsProvider = ({ children }) => {
         deleteComment,
         onUpdateComment,
         onCreateComment,
+        onReply,
         getReplies,
       }}
     >

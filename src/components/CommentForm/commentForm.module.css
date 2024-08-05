@@ -8,7 +8,9 @@
   gap: 16px;
 }
 
-.form--new-comment {
+.form--new-comment,
+.form--reply-comment {
+  margin-top: 16px;
   align-items: start;
   background-color: var(--clr-neutral-100);
   padding: 28px 24px;

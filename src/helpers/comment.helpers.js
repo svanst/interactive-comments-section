@@ -1,5 +1,3 @@
-import { immerable } from "immer";
-
 function getComment(comments, id) {
   for (const comment of comments) {
     if (comment.id === id) {
@@ -42,7 +40,7 @@ function deleteComment(comments, id) {
 
 function getRepliesForComment(comments, id) {
   const comment = getComment(comments, id);
-  return comment.replies || [];
+  return comment.replies || null;
 }
 
 export { getComment, createComment, deleteComment, getRepliesForComment };

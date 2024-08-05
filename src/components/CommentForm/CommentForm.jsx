@@ -6,16 +6,18 @@ import Button from "../Button/Button";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
 import Avatar from "../Avatar/Avatar";
 import classNames from "classnames";
+import { modes } from "../Comment/modes";
 
 function CommentForm({
   type,
   textareaValue,
   setTextareaValue,
-  setEditMode,
+  setMode,
   commentID,
   className,
 }) {
-  const { onUpdateComment, onCreateComment } = useContext(CommentsContext);
+  const { onUpdateComment, onCreateComment, onReply } =
+    useContext(CommentsContext);
   const { currentUser } = useContext(CurrentUserContext);
 
   const textareaRef = useRef(null);
@@ -38,17 +40,18 @@ function CommentForm({
       case "new":
         onCreateComment(textareaValue);
         setTextareaValue("");
-        break;
+        return;
       case "edit":
-        setEditMode(false);
         onUpdateComment(commentID, textareaValue);
         break;
       case "reply":
-        setEditMode(false);
+        onReply(commentID, textareaValue);
         break;
       default:
-        setEditMode(false);
+      // do something
     }
+
+    setMode(modes.read);
   }
 
   const handleInput = (e) => {

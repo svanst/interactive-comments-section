@@ -2,23 +2,27 @@ import { useContext, useState } from "react";
 import { CommentsContext } from "../../contexts/commentsContext";
 import CommentList from "../CommentList/CommentList";
 
-import Rating from "../Rating/Rating";
-import styles from "./Comment.module.css";
+import Avatar from "../Avatar/Avatar";
 import ButtonRow from "../ButtonRow/ButtonRow";
 import CommentForm from "../CommentForm/CommentForm";
-import Avatar from "../Avatar/Avatar";
+import Rating from "../Rating/Rating";
+import styles from "./Comment.module.css";
+import { modes } from "./modes";
 
 function Comment({ commentID, author, date, content, avatar, rating }) {
   const { getReplies } = useContext(CommentsContext);
-  const [editMode, setEditMode] = useState(false);
-  const [textareaValue, setTextareaValue] = useState(content);
+  const [mode, setMode] = useState(modes.read); // read | edit | reply
+  const [textareaValue, setTextareaValue] = useState("");
 
-  const toggleEditMode = () => {
-    const newEditMode = !editMode;
-    if (newEditMode) {
-      setTextareaValue(content); // if the user is in the process of editing but closes edit mode by clicking on the edit button, reset the textarea value to the original content
+  const changeMode = (mode) => {
+    if (mode === modes.edit) {
+      setTextareaValue(content);
+    } else if (mode === modes.reply) {
+      setTextareaValue("");
+    } else if (mode === modes.read) {
+      setTextareaValue(content);
     }
-    setEditMode(newEditMode);
+    setMode(mode);
   };
 
   const replies = getReplies(commentID);
@@ -33,12 +37,12 @@ function Comment({ commentID, author, date, content, avatar, rating }) {
           </address>
           <time dateTime="">{date}</time>
         </div>
-        {editMode ? (
+        {mode === modes.edit ? (
           <CommentForm
             type="edit"
             textareaValue={textareaValue}
             setTextareaValue={setTextareaValue}
-            setEditMode={setEditMode}
+            setMode={setMode}
             commentID={commentID}
           />
         ) : (
@@ -53,15 +57,22 @@ function Comment({ commentID, author, date, content, avatar, rating }) {
         <ButtonRow
           author={author}
           commentID={commentID}
-          toggleEditMode={toggleEditMode}
+          mode={mode}
+          changeMode={changeMode}
         />
       </div>
-
-      {replies.length > 0 && (
-        <div className={styles.replies}>
-          <CommentList comments={replies} />
-        </div>
-      )}
+      <div className={styles.replies}>
+        {replies?.length > 0 && <CommentList comments={replies} />}
+        {mode === modes.reply && (
+          <CommentForm
+            type="reply"
+            textareaValue={textareaValue}
+            setTextareaValue={setTextareaValue}
+            setMode={setMode}
+            commentID={commentID}
+          />
+        )}
+      </div>
     </article>
   );
 }

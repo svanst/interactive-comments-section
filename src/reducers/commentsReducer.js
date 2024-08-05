@@ -3,10 +3,12 @@ import {
   createComment,
   deleteComment,
   getComment,
+  getRepliesForComment,
 } from "../helpers/comment.helpers";
 
 export const actions = {
   create: "create",
+  reply: "reply",
   update: "update",
   delete: "delete",
   increase: "increase",
@@ -16,7 +18,7 @@ export const actions = {
 export const commentsReducer = (comments, action) => {
   return produce(comments, (draft) => {
     let comment;
-    if (action.type === actions.create) {
+    if (action.type === actions.create || action.type === actions.reply) {
       comment = createComment(action.content, action.user);
     } else {
       comment = getComment(draft, action.id);
@@ -28,6 +30,17 @@ export const commentsReducer = (comments, action) => {
       case actions.create:
         draft.push(comment);
         break;
+      case actions.reply: {
+        const replies = getRepliesForComment(draft, action.parentCommentID);
+        if (!replies) {
+          // nested replies don't have a replies property yet, so this needs to be created
+          const parentComment = getComment(draft, action.parentCommentID);
+          parentComment.replies = [comment];
+        } else {
+          replies.push(comment);
+        }
+        break;
+      }
       case actions.update:
         comment.content = action.content;
         break;
