@@ -1,5 +1,5 @@
 import Comment from "../Comment/Comment";
-import MaxWidthWrapper from "../MaxWidthWrapper/MaxWidthWrapper";
+
 import styles from "./CommentList.module.css";
 
 function CommentList({ comments }) {

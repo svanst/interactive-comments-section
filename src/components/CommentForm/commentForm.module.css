@@ -1,0 +1,20 @@
+.form {
+  grid-area: content;
+  justify-self: stretch;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 16px;
+}
+
+.textarea {
+  appearance: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 12px 24px;
+  border-color: var(--clr-primary);
+  border-style: solid;
+  border-radius: 8px;
+  resize: none;
+}

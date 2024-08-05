@@ -1,7 +1,13 @@
 import classNames from "classnames";
 import styles from "./Button.module.css";
 
-function Button({ children, className, variant, color = "primary", ...rest }) {
+function Button({
+  children,
+  className,
+  variant = "fill",
+  color = "primary",
+  ...rest
+}) {
   const combinedClasses = classNames(
     styles.btn,
     styles[`btn--${variant}`],
