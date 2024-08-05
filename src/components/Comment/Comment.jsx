@@ -1,14 +1,12 @@
 import { useContext, useState } from "react";
 import { CommentsContext } from "../../contexts/commentsContext";
-import { getImage } from "../../helpers/image.helpers";
 import CommentList from "../CommentList/CommentList";
 
 import Rating from "../Rating/Rating";
 import styles from "./Comment.module.css";
 import ButtonRow from "../ButtonRow/ButtonRow";
 import CommentForm from "../CommentForm/CommentForm";
-
-const getAvatarSrc = (path) => path.replace("./images/avatars/", "");
+import Avatar from "../Avatar/Avatar";
 
 function Comment({ commentID, author, date, content, avatar, rating }) {
   const { getReplies } = useContext(CommentsContext);
@@ -25,19 +23,11 @@ function Comment({ commentID, author, date, content, avatar, rating }) {
 
   const replies = getReplies(commentID);
 
-  const avatarSrc = {
-    png: getAvatarSrc(avatar.png),
-    webp: getAvatarSrc(avatar.webp),
-  };
-
   return (
     <article>
       <div className={`bg-neutral-100 ${styles.comment}`}>
         <div className={styles.attribution}>
-          <picture>
-            <source srcSet={getImage(avatarSrc.webp)} type="image/webp" />
-            <img src={getImage(avatarSrc.png)} alt={`${author}'s avatar`} />
-          </picture>
+          <Avatar avatar={avatar} author={author} />
           <address className="fw-bold clr-neutral-700  font-style-normal">
             {author}
           </address>
@@ -45,6 +35,7 @@ function Comment({ commentID, author, date, content, avatar, rating }) {
         </div>
         {editMode ? (
           <CommentForm
+            type="edit"
             textareaValue={textareaValue}
             setTextareaValue={setTextareaValue}
             setEditMode={setEditMode}

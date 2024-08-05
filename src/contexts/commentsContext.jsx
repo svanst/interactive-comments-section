@@ -1,7 +1,8 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { actions, commentsReducer } from "../reducers/commentsReducer";
 import { getComments } from "../helpers/data.helpers";
 import { getRepliesForComment } from "../helpers/comment.helpers";
+import { CurrentUserContext } from "./currentUserContext";
 
 const CommentsContext = createContext();
 
@@ -12,12 +13,16 @@ const CommentsProvider = ({ children }) => {
     getComments
   );
 
-  const increaseRating = (id) =>
+  const { currentUser: user } = useContext(CurrentUserContext);
+
+  const onIncreaseRating = (id) =>
     dispatch({ type: actions.increase, comments, id });
-  const decreaseRating = (id) =>
+  const onDecreaseRating = (id) =>
     dispatch({ type: actions.decrease, comments, id });
-  const updateComment = (id, content) =>
+  const onUpdateComment = (id, content) =>
     dispatch({ type: actions.update, comments, content, id });
+  const onCreateComment = (content) =>
+    dispatch({ type: actions.create, comments, content, user });
 
   const deleteComment = (id) =>
     dispatch({ type: actions.delete, comments, id });
@@ -28,10 +33,11 @@ const CommentsProvider = ({ children }) => {
     <CommentsContext.Provider
       value={{
         comments,
-        increaseRating,
-        decreaseRating,
+        onIncreaseRating,
+        onDecreaseRating,
         deleteComment,
-        updateComment,
+        onUpdateComment,
+        onCreateComment,
         getReplies,
       }}
     >

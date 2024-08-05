@@ -25,7 +25,7 @@ function ButtonRow({ author, commentID, toggleEditMode }) {
           </Button>
           <Button variant="ghost" onClick={toggleEditMode}>
             <IconEdit />
-            Edit?
+            Edit
           </Button>
         </>
       ) : (

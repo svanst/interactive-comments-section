@@ -1,3 +1,5 @@
+import { immerable } from "immer";
+
 function getComment(comments, id) {
   for (const comment of comments) {
     if (comment.id === id) {
@@ -11,6 +13,19 @@ function getComment(comments, id) {
     }
   }
   return null;
+}
+
+function createComment(content, user) {
+  const newComment = {
+    id: crypto.randomUUID(),
+    content: content,
+    createdAt: "Just now",
+    score: 0,
+    user: user,
+    replies: [],
+  };
+
+  return newComment;
 }
 
 function deleteComment(comments, id) {
@@ -30,4 +45,4 @@ function getRepliesForComment(comments, id) {
   return comment.replies || [];
 }
 
-export { getComment, deleteComment, getRepliesForComment };
+export { getComment, createComment, deleteComment, getRepliesForComment };

@@ -11,9 +11,9 @@ import { CurrentUserProvider } from "./contexts/currentUserContext.jsx";
 const root = createRoot(document.querySelector("#root"));
 
 root.render(
-  <CommentsProvider>
-    <CurrentUserProvider>
+  <CurrentUserProvider>
+    <CommentsProvider>
       <App />
-    </CurrentUserProvider>
-  </CommentsProvider>
+    </CommentsProvider>
+  </CurrentUserProvider>
 );

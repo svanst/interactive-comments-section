@@ -1,24 +1,32 @@
-import { deleteComment, getComment } from "../helpers/comment.helpers";
 import { produce } from "immer";
+import {
+  createComment,
+  deleteComment,
+  getComment,
+} from "../helpers/comment.helpers";
 
 export const actions = {
+  create: "create",
+  update: "update",
+  delete: "delete",
   increase: "increase",
   decrease: "decrease",
-  delete: "delete",
-  update: "update",
 };
 
 export const commentsReducer = (comments, action) => {
   return produce(comments, (draft) => {
-    let comment = getComment(draft, action.id);
+    let comment;
+    if (action.type === actions.create) {
+      comment = createComment(action.content, action.user);
+    } else {
+      comment = getComment(draft, action.id);
+    }
+
     if (!comment) return;
 
     switch (action.type) {
-      case actions.increase:
-        comment.score = comment.score + 1;
-        break;
-      case actions.decrease:
-        comment.score = Math.max(comment.score - 1, 0);
+      case actions.create:
+        draft.push(comment);
         break;
       case actions.update:
         comment.content = action.content;
@@ -26,6 +34,13 @@ export const commentsReducer = (comments, action) => {
       case actions.delete:
         deleteComment(draft, action.id);
         break;
+      case actions.increase:
+        comment.score = comment.score + 1;
+        break;
+      case actions.decrease:
+        comment.score = Math.max(comment.score - 1, 0);
+        break;
+
       default:
         throw new Error(`Unhandled action type: ${action.type}`);
     }

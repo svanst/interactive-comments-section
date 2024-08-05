@@ -3,14 +3,20 @@ import styles from "./commentForm.module.css";
 import { useContext, useEffect, useRef } from "react";
 import { CommentsContext } from "../../contexts/commentsContext";
 import Button from "../Button/Button";
+import { CurrentUserContext } from "../../contexts/currentUserContext";
+import Avatar from "../Avatar/Avatar";
+import classNames from "classnames";
 
 function CommentForm({
+  type,
   textareaValue,
   setTextareaValue,
   setEditMode,
   commentID,
+  className,
 }) {
-  const { updateComment } = useContext(CommentsContext);
+  const { onUpdateComment, onCreateComment } = useContext(CommentsContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const textareaRef = useRef(null);
 
@@ -27,8 +33,22 @@ function CommentForm({
 
   function handleSubmit(e) {
     e.preventDefault();
-    setEditMode(false);
-    updateComment(commentID, textareaValue);
+
+    switch (type) {
+      case "new":
+        onCreateComment(textareaValue);
+        setTextareaValue("");
+        break;
+      case "edit":
+        setEditMode(false);
+        onUpdateComment(commentID, textareaValue);
+        break;
+      case "reply":
+        setEditMode(false);
+        break;
+      default:
+        setEditMode(false);
+    }
   }
 
   const handleInput = (e) => {
@@ -36,17 +56,38 @@ function CommentForm({
     setTextareaValue(textarea.value);
   };
 
+  const renderButton = () => {
+    switch (type) {
+      case "new":
+        return <Button type="submit">Send</Button>;
+      case "edit":
+        return <Button type="submit">Update</Button>;
+      case "reply":
+        return <Button type="submit">Reply</Button>;
+      default:
+        return <Button type="submit">Submit</Button>;
+    }
+  };
+
+  const combinedClasses = classNames(
+    className,
+    styles.form,
+    styles[`form--${type}-comment`]
+  );
+
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit} className={combinedClasses}>
+      {(type === "reply" || type === "new") && (
+        <Avatar avatar={currentUser.image} author={currentUser.author} />
+      )}
       <textarea
         value={textareaValue}
+        placeholder="Add a comment..."
         onInput={handleInput}
         className={styles.textarea}
         ref={textareaRef}
       />
-      <Button type="submit" className={styles.update}>
-        Update
-      </Button>
+      {renderButton()}
     </form>
   );
 }

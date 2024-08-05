@@ -8,10 +8,25 @@
   gap: 16px;
 }
 
+.form--new-comment {
+  align-items: start;
+  background-color: var(--clr-neutral-100);
+  padding: 28px 24px;
+  border-radius: 8px;
+  img {
+    width: 40px;
+  }
+
+  textarea {
+    flex: 1;
+  }
+}
+
 .textarea {
   appearance: none;
   overflow: hidden;
   width: 100%;
+  min-height: 96px;
   padding: 12px 24px;
   border-color: var(--clr-primary);
   border-style: solid;
