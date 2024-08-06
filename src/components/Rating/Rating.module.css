@@ -3,12 +3,17 @@
 .wrapper {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   padding: 6px;
+  gap: 10px;
   border-radius: 10px;
 
   @media (tablet-and-up) {
     flex-direction: column;
+    gap: 10px;
     padding: 6px;
+  }
+
+  button[disabled] {
+    cursor: not-allowed;
   }
 }

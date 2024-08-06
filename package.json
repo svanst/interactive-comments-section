@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write \"**/*.{js,jsx}\"",
-    "lint": "eslint \"**/*.{js,jsx}\""
+    "lint": "eslint \"**/*.{js,jsx}\"",
+    "ngrok": "ngrok start default"
   },
   "keywords": [],
   "author": "",

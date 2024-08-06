@@ -3,7 +3,7 @@ import styles from "./commentActions.module.css";
 import Button from "../Button/Button";
 import { IconDelete, IconEdit, IconReply } from "../Icon/Icon";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { CommentsContext } from "../../contexts/commentsContext";
 import { modes } from "../Comment/modes";
 import {

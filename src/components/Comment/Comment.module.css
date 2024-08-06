@@ -3,8 +3,8 @@
 .comment {
   display: grid;
   justify-items: start;
+  align-items: center;
   padding: clamp(16px, 4vw, 24px);
-  column-gap: 24px;
   row-gap: 16px;
   border-radius: 8px;
 
@@ -12,12 +12,15 @@
     "attribution attribution"
     "content     content"
     "rating      actions ";
+  grid-template-columns: 100px 1fr;
 
   @media (tablet-and-up) {
     grid-template-areas:
       "rating attribution actions"
       "rating content     content";
     grid-template-columns: auto 1fr auto;
+    column-gap: 24px;
+
     align-items: start;
   }
 }

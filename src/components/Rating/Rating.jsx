@@ -15,19 +15,25 @@ function Rating({ className, commentID, score, author }) {
   const isCurrentUser = author === currentUser.username;
 
   const handleIncrease = () => {
-    if (score === initialRating + 1) return;
+    if (score === initialRating + 1) {
+      alert(`You already upvoted this comment.`);
+      return;
+    }
     onIncreaseRating(commentID);
   };
 
   const handleDecrease = () => {
-    if (score === initialRating - 1) return;
+    if (score === initialRating - 1) {
+      alert(`You already downvoted this comment.`);
+      return;
+    }
     onDecreaseRating(commentID);
   };
 
   return (
     <div className={`bg-neutral-400 ${styles.wrapper} ${className}`}>
       <Button
-        aria-label="increase rating"
+        aria-label="increase rating by 1"
         variant="icon"
         color="primary-light"
         onClick={() => handleIncrease()}
@@ -40,7 +46,7 @@ function Rating({ className, commentID, score, author }) {
         {score}
       </span>
       <Button
-        aria-label="decrease rating"
+        aria-label="decrease rating by 1"
         variant="icon"
         color="primary-light"
         onClick={() => handleDecrease()}

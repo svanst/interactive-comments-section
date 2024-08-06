@@ -2,12 +2,15 @@
   grid-area: actions;
   justify-self: end;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: clamp(1rem, 4vw, 1.5rem);
+  justify-content: end;
+  column-gap: clamp(1rem, 4vw, 1.5rem);
 }
 
 .confirmation-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
 
