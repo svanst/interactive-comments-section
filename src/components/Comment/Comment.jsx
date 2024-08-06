@@ -50,6 +50,7 @@ function Comment({ commentID, author, date, content, avatar, rating }) {
         )}
 
         <Rating
+          author={author}
           score={rating}
           commentID={commentID}
           className={styles.rating}

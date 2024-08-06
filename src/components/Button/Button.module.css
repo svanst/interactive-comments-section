@@ -50,7 +50,7 @@
   &:is(.btn--ghost, .btn--icon) {
     color: var(--clr-primary--light);
 
-    &:hover {
+    &:hover:not(:disabled) {
       color: var(--clr-primary);
     }
   }
@@ -98,4 +98,8 @@
   &:hover {
     background-color: transparent;
   }
+}
+
+.btn:disabled {
+  cursor: default;
 }

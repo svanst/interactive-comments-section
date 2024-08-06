@@ -36,6 +36,11 @@ function CommentForm({
   function handleSubmit(e) {
     e.preventDefault();
 
+    if (textareaValue.match(/^\s*$/)) {
+      alert("Please provide some text");
+      return;
+    }
+
     switch (type) {
       case "new":
         onCreateComment(textareaValue);
@@ -89,6 +94,7 @@ function CommentForm({
         onInput={handleInput}
         className={styles.textarea}
         ref={textareaRef}
+        required
       />
       {renderButton()}
     </form>
