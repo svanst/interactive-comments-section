@@ -3,5 +3,5 @@
   justify-self: end;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: clamp(1rem, 4vw, 1.5rem);
 }

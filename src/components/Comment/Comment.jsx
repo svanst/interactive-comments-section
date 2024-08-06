@@ -62,18 +62,22 @@ function Comment({ commentID, author, date, content, avatar, rating }) {
           changeMode={changeMode}
         />
       </div>
-      <div className={styles.replies}>
-        {replies?.length > 0 && <CommentList comments={replies} />}
-        {mode === modes.reply && (
-          <CommentForm
-            type="reply"
-            textareaValue={textareaValue}
-            setTextareaValue={setTextareaValue}
-            setMode={setMode}
-            commentID={commentID}
-          />
-        )}
-      </div>
+      {mode === modes.reply && (
+        <CommentForm
+          type="reply"
+          textareaValue={textareaValue}
+          setTextareaValue={setTextareaValue}
+          setMode={setMode}
+          commentID={commentID}
+        />
+      )}
+      {replies?.length > 0 && (
+        <div className={styles.replies}>
+          <CommentList comments={replies} />
+        </div>
+      )}
+
+      {/* </div> */}
     </article>
   );
 }

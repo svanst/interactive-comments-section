@@ -1,17 +1,41 @@
+@value tablet-and-up from '/src/styles/breakpoints.module.css';
+
 .form {
   grid-area: content;
   justify-self: stretch;
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: end;
+  display: grid;
   gap: 16px;
+  align-items: center;
+
+  grid-template-areas:
+    "textarea textarea"
+    "avatar   button";
+
+  img {
+    grid-area: avatar;
+  }
+
+  textarea {
+    grid-area: textarea;
+  }
+
+  button[type="submit"] {
+    grid-area: button;
+    justify-self: end;
+  }
+
+  @media (tablet-and-up) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: start;
+  }
 }
 
 .form--new-comment,
 .form--reply-comment {
-  margin-top: 16px;
-  align-items: start;
+  margin-top: 8px;
   background-color: var(--clr-neutral-100);
   padding: 28px 24px;
   border-radius: 8px;
@@ -34,4 +58,6 @@
   border-style: solid;
   border-radius: 8px;
   resize: none;
+
+  caret-color: var(--clr-primary);
 }

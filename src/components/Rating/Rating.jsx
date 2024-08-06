@@ -13,7 +13,6 @@ function Rating({ className, commentID, score, author }) {
   const [initialRating] = useState(score);
 
   const isCurrentUser = author === currentUser.username;
-  console.log(isCurrentUser);
 
   const handleIncrease = () => {
     if (score === initialRating + 1) return;

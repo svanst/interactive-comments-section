@@ -43,18 +43,45 @@
 }
 
 .replies {
+  --pad-left: 18px;
   margin-top: clamp(1rem, 4vw, 1.25rem);
   position: relative;
-  padding-left: 88px;
+  padding-left: var(--pad-left);
 
   &::before {
+    --width: 2px;
     content: "";
     display: block;
     position: absolute;
-    width: 2px;
+    width: var(--width);
     top: 0;
     bottom: 0;
-    left: 43px;
+    left: 0;
     background-color: var(--clr-neutral-400);
+  }
+
+  @media (tablet-and-up) {
+    --pad-left: 88px;
+
+    &::before {
+      left: calc(var(--pad-left) / 2 - (var(--width) / 2));
+    }
+  }
+}
+
+.replies .replies {
+  /* This ensures that replies to replies don't get indented on mobile, as there is not enough space */
+  --pad-left: 0px;
+
+  &:before {
+    content: none;
+  }
+
+  @media (tablet-and-up) {
+    --pad-left: 88px;
+
+    &::before {
+      content: "";
+    }
   }
 }
