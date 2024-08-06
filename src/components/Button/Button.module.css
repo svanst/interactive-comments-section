@@ -21,7 +21,7 @@
 
 .btn--icon {
   background-color: transparent;
-  padding: 0.5em;
+  padding: 0.4em;
 }
 
 /* color */
@@ -47,16 +47,16 @@
   background-color: var(--clr-primary--light);
   color: var(--clr-neutral-100);
 
+  &:hover {
+    background-color: var(--clr-primary);
+  }
+
   &:is(.btn--ghost, .btn--icon) {
     color: var(--clr-primary--light);
 
     &:hover:not(:disabled) {
       color: var(--clr-primary);
     }
-  }
-
-  &:hover {
-    background-color: var(--clr-primary);
   }
 }
 

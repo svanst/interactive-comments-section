@@ -1,14 +1,17 @@
 {
   "name": "react-template",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run dev",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write \"**/*.{js,jsx}\"",
-    "lint": "eslint \"**/*.{js,jsx}\"",
+    "lint:js": "eslint \"**/*.{js,jsx}\"",
+    "lint:css": "npx stylelint \"src/**/*.css\"",
     "ngrok": "ngrok start default"
   },
   "keywords": [],
@@ -23,6 +26,11 @@
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.9",
+    "postcss-hover-media-feature": "^1.0.2",
+    "postcss-preset-env": "^10.0.0",
+    "stylelint": "^16.8.1",
+    "stylelint-config-css-modules": "^4.4.0",
+    "stylelint-config-standard": "^36.0.1",
     "vite": "^5.3.5"
   },
   "dependencies": {

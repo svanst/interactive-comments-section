@@ -3,11 +3,9 @@
 .form {
   grid-area: content;
   justify-self: stretch;
-
   display: grid;
   gap: 16px;
   align-items: center;
-
   grid-template-areas:
     "textarea textarea"
     "avatar   button";
@@ -39,6 +37,7 @@
   background-color: var(--clr-neutral-100);
   padding: 28px 24px;
   border-radius: 8px;
+
   img {
     width: 40px;
   }
@@ -58,6 +57,5 @@
   border-style: solid;
   border-radius: 8px;
   resize: none;
-
   caret-color: var(--clr-primary);
 }

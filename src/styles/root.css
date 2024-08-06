@@ -1,25 +1,20 @@
 :root {
-  --ff-system-sans: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-    segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+  --ff-system-sans: -apple-system, blinkmacsystemfont, avenir next, avenir,
+    segoe ui, helvetica neue, helvetica, cantarell, ubuntu, roboto, noto, arial,
     sans-serif;
   --ff-body: "Rubik";
-
-  --fs-400: 1rem;
-
-  --clr-neutral-100: hsl(0deg 0% 100%);
-  --clr-neutral-200: hsl(228, 33%, 97%);
-  --clr-neutral-400: hsl(223, 19%, 93%);
-  --clr-neutral-600: hsl(211, 10%, 45%);
-  --clr-neutral-700: hsl(212, 24%, 26%);
-  --clr-neutral-900: hsl(0deg 0% 0%);
-
-  --clr-primary: hsl(238, 40%, 52%);
-  --clr-primary--light: hsl(239, 57%, 85%);
-  --clr-danger: hsl(358, 79%, 66%);
-  --clr-danger--light: hsl(357, 100%, 86%);
-
   --fs-400: 1rem;
   --fs-600: calc(20 / 16 * 1rem);
+  --clr-neutral-100: hsl(0deg 0% 100%);
+  --clr-neutral-200: hsl(228deg 33% 97%);
+  --clr-neutral-400: hsl(223deg 19% 93%);
+  --clr-neutral-600: hsl(211deg 10% 45%);
+  --clr-neutral-700: hsl(212deg 24% 26%);
+  --clr-neutral-900: hsl(0deg 0% 0%);
+  --clr-primary: hsl(238deg 40% 52%);
+  --clr-primary--light: hsl(239deg 57% 85%);
+  --clr-danger: hsl(358deg 79% 66%);
+  --clr-danger--light: hsl(357deg 100% 86%);
 
   @media (width >= 34.375rem) {
     --fs-600: calc(24 / 16 * 1rem);

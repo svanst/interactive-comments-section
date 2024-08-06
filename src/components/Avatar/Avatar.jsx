@@ -1,4 +1,3 @@
-// import styles from "./Avatar.module.css";
 import { getImage } from "../../helpers/image.helpers";
 
 const getAvatarSrc = (path) => path.replace("./images/avatars/", "");
