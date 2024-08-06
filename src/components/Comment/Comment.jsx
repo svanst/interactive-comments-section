@@ -3,7 +3,7 @@ import { CommentsContext } from "../../contexts/commentsContext";
 import CommentList from "../CommentList/CommentList";
 
 import Avatar from "../Avatar/Avatar";
-import ButtonRow from "../ButtonRow/ButtonRow";
+import CommentActions from "../CommentActions/CommentActions";
 import CommentForm from "../CommentForm/CommentForm";
 import Rating from "../Rating/Rating";
 import styles from "./Comment.module.css";
@@ -73,7 +73,7 @@ function Comment({
           commentID={commentID}
           className={styles.rating}
         />
-        <ButtonRow
+        <CommentActions
           author={author}
           commentID={commentID}
           mode={mode}

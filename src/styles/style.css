@@ -3,5 +3,4 @@ body {
   font-size: var(--fs-400);
   background-color: var(--clr-neutral-200);
   color: var(--clr-neutral-600);
-  padding-block: clamp(2rem, 7vw, 4rem);
 }

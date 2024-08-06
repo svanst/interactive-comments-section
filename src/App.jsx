@@ -12,7 +12,7 @@ export default function App() {
   const [newComment, setNewComment] = useState("");
 
   return (
-    <main>
+    <main className={styles.main}>
       <MaxWidthWrapper>
         <VisuallyHidden asChild>
           <h1>Interactive comments section</h1>

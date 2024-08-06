@@ -5,3 +5,13 @@
   align-items: center;
   gap: clamp(1rem, 4vw, 1.5rem);
 }
+
+.confirmation-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+
+  .btn {
+    padding-inline: 18px;
+  }
+}

@@ -1,3 +1,7 @@
+.main {
+  padding-block: clamp(2rem, 7vw, 4rem);
+}
+
 .comment-list {
   margin-bottom: 24px;
 }
