@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { CommentsContext } from "../../contexts/commentsContext";
 import CommentList from "../CommentList/CommentList";
 
@@ -21,6 +21,17 @@ function Comment({
   const { getReplies } = useContext(CommentsContext);
   const [mode, setMode] = useState(modes.read); // read | edit | reply
   const [textareaValue, setTextareaValue] = useState("");
+  const textareaRef = useRef(null);
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (mode === modes.reply || mode === modes.edit) {
+      textarea.focus();
+    }
+    if (mode === modes.edit) {
+      // move cursor to the end of the text
+      textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+    }
+  }, [mode]);
 
   const changeMode = (mode) => {
     if (mode === modes.edit) {
@@ -51,6 +62,7 @@ function Comment({
             mode={modes.edit}
             textareaValue={textareaValue}
             setTextareaValue={setTextareaValue}
+            ref={textareaRef}
             setMode={setMode}
             commentID={commentID}
           />
@@ -85,6 +97,7 @@ function Comment({
           type="reply"
           textareaValue={textareaValue}
           setTextareaValue={setTextareaValue}
+          ref={textareaRef}
           setMode={setMode}
           mode={modes.reply}
           commentID={commentID}
@@ -95,8 +108,6 @@ function Comment({
           <CommentList comments={replies} />
         </div>
       )}
-
-      {/* </div> */}
     </article>
   );
 }
