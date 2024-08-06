@@ -32,9 +32,10 @@ export const commentsReducer = (comments, action) => {
         break;
       case actions.reply: {
         const replies = getRepliesForComment(draft, action.parentCommentID);
+        const parentComment = getComment(draft, action.parentCommentID);
+        comment.replyingTo = parentComment.user.username;
         if (!replies) {
           // nested replies don't have a replies property yet, so this needs to be created
-          const parentComment = getComment(draft, action.parentCommentID);
           parentComment.replies = [comment];
         } else {
           replies.push(comment);

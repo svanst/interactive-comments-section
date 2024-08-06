@@ -9,7 +9,15 @@ import Rating from "../Rating/Rating";
 import styles from "./Comment.module.css";
 import { modes } from "./modes";
 
-function Comment({ commentID, author, date, content, avatar, rating }) {
+function Comment({
+  commentID,
+  author,
+  replyingTo,
+  date,
+  content,
+  avatar,
+  rating,
+}) {
   const { getReplies } = useContext(CommentsContext);
   const [mode, setMode] = useState(modes.read); // read | edit | reply
   const [textareaValue, setTextareaValue] = useState("");
@@ -40,13 +48,23 @@ function Comment({ commentID, author, date, content, avatar, rating }) {
         {mode === modes.edit ? (
           <CommentForm
             type="edit"
+            mode={modes.edit}
             textareaValue={textareaValue}
             setTextareaValue={setTextareaValue}
             setMode={setMode}
             commentID={commentID}
           />
         ) : (
-          <p className={styles.content}>{content}</p>
+          <p className={styles.content}>
+            {replyingTo ? (
+              <>
+                <span className="fw-bold clr-primary">@{replyingTo} </span>
+                {content}
+              </>
+            ) : (
+              content
+            )}
+          </p>
         )}
 
         <Rating
@@ -68,6 +86,7 @@ function Comment({ commentID, author, date, content, avatar, rating }) {
           textareaValue={textareaValue}
           setTextareaValue={setTextareaValue}
           setMode={setMode}
+          mode={modes.reply}
           commentID={commentID}
         />
       )}

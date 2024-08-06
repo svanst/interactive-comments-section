@@ -12,6 +12,7 @@ function CommentForm({
   type,
   textareaValue,
   setTextareaValue,
+  mode,
   setMode,
   commentID,
   className,
@@ -90,7 +91,9 @@ function CommentForm({
       )}
       <textarea
         value={textareaValue}
-        placeholder="Add a comment..."
+        placeholder={
+          mode === modes.reply ? "Write a reply..." : "Add a comment..."
+        }
         onInput={handleInput}
         className={styles.textarea}
         ref={textareaRef}
