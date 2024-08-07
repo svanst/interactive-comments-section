@@ -14,10 +14,6 @@
     grid-area: avatar;
   }
 
-  textarea {
-    grid-area: textarea;
-  }
-
   button[type="submit"] {
     grid-area: button;
     justify-self: end;
@@ -31,6 +27,20 @@
   }
 }
 
+.textarea {
+  appearance: none;
+  overflow: hidden;
+  grid-area: textarea;
+  width: 100%;
+  min-height: 96px;
+  padding: 12px 24px;
+  border-color: var(--clr-primary);
+  border-style: solid;
+  border-radius: 8px;
+  resize: none;
+  caret-color: var(--clr-primary);
+}
+
 .form--new-comment,
 .form--reply-comment {
   margin-top: 8px;
@@ -42,20 +52,7 @@
     width: 40px;
   }
 
-  textarea {
+  .textarea {
     flex: 1;
   }
-}
-
-.textarea {
-  appearance: none;
-  overflow: hidden;
-  width: 100%;
-  min-height: 96px;
-  padding: 12px 24px;
-  border-color: var(--clr-primary);
-  border-style: solid;
-  border-radius: 8px;
-  resize: none;
-  caret-color: var(--clr-primary);
 }

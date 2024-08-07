@@ -22,7 +22,7 @@ function Comment({
   const { getReplies } = useContext(CommentsContext);
   const isCurrentUser = useIsCurrentUser(author);
 
-  const [mode, setMode] = useState(modes.read); // read | edit | reply
+  const [mode, setMode] = useState(modes.read); // read | edit | reply | new
   const [textareaValue, setTextareaValue] = useState("");
   const textareaRef = useRef(null);
   useEffect(() => {

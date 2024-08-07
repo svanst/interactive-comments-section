@@ -92,6 +92,7 @@ const CommentForm = forwardRef(
           className={styles.textarea}
           ref={ref}
           required
+          aria-label={mode === modes.reply ? "Write a reply" : "Add a comment"}
         />
         {renderButton()}
       </form>
