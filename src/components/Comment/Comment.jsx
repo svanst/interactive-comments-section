@@ -62,7 +62,6 @@ function Comment({
         </div>
         {mode === modes.edit ? (
           <CommentForm
-            type="edit"
             mode={modes.edit}
             textareaValue={textareaValue}
             setTextareaValue={setTextareaValue}
@@ -98,7 +97,6 @@ function Comment({
       </div>
       {mode === modes.reply && (
         <CommentForm
-          type="reply"
           textareaValue={textareaValue}
           setTextareaValue={setTextareaValue}
           ref={textareaRef}

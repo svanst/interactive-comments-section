@@ -84,7 +84,7 @@
   }
 
   @media (tablet-and-up) {
-    --pad-left: 88px;
+    --pad-left: 68px;
 
     &::before {
       content: "";

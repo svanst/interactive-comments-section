@@ -1,5 +1,5 @@
 body {
-  font-family: var(--ff-body);
+  font-family: var(--ff-body), sans-serif;
   font-size: var(--fs-400);
   background-color: var(--clr-neutral-200);
   color: var(--clr-neutral-600);

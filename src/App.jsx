@@ -6,6 +6,7 @@ import styles from "./app.module.css";
 import { useContext, useRef, useState } from "react";
 import { CommentsContext } from "./contexts/commentsContext";
 import CommentForm from "./components/CommentForm/CommentForm";
+import { modes } from "./components/Comment/modes";
 
 export default function App() {
   const { comments } = useContext(CommentsContext);
@@ -20,7 +21,7 @@ export default function App() {
         </VisuallyHidden>
         <CommentList comments={comments} className={styles.commentList} />
         <CommentForm
-          type="new"
+          mode={modes.new}
           textareaValue={newComment}
           setTextareaValue={setNewComment}
           ref={textareaRef}

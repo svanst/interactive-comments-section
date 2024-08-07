@@ -10,15 +10,7 @@ import { modes } from "../Comment/modes";
 
 const CommentForm = forwardRef(
   (
-    {
-      type,
-      textareaValue,
-      setTextareaValue,
-      mode,
-      setMode,
-      commentID,
-      className,
-    },
+    { textareaValue, setTextareaValue, mode, setMode, commentID, className },
     ref
   ) => {
     const { onUpdateComment, onCreateComment, onReply } =
@@ -44,19 +36,19 @@ const CommentForm = forwardRef(
         return;
       }
 
-      switch (type) {
-        case "new":
+      switch (mode) {
+        case modes.new:
           onCreateComment(textareaValue);
           setTextareaValue("");
           return;
-        case "edit":
+        case modes.edit:
           onUpdateComment(commentID, textareaValue);
           break;
-        case "reply":
+        case modes.reply:
           onReply(commentID, textareaValue);
           break;
         default:
-          throw new Error(`Unhandled type: ${type}`);
+          throw new Error(`Unhandled mode: ${mode}`);
       }
 
       setMode(modes.read);
@@ -68,12 +60,12 @@ const CommentForm = forwardRef(
     };
 
     const renderButton = () => {
-      switch (type) {
-        case "new":
+      switch (mode) {
+        case modes.new:
           return <Button type="submit">Send</Button>;
-        case "edit":
+        case modes.edit:
           return <Button type="submit">Update</Button>;
-        case "reply":
+        case modes.reply:
           return <Button type="submit">Reply</Button>;
         default:
           return <Button type="submit">Submit</Button>;
@@ -83,12 +75,12 @@ const CommentForm = forwardRef(
     const combinedClasses = classNames(
       className,
       styles.form,
-      styles[`form--${type}-comment`]
+      styles[`form--${mode}-comment`]
     );
 
     return (
       <form onSubmit={handleSubmit} className={combinedClasses}>
-        {(type === "reply" || type === "new") && (
+        {(mode === modes.reply || mode === modes.new) && (
           <Avatar avatar={currentUser.image} author={currentUser.author} />
         )}
         <textarea
