@@ -103,6 +103,7 @@ function Comment({
           setMode={setMode}
           mode={modes.reply}
           commentID={commentID}
+          className={styles.replyAnimation}
         />
       )}
       {replies?.length > 0 && (
