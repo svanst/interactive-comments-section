@@ -26,6 +26,7 @@ My goals in taking on this challenge included the following:
 - Use the Radix UI React component library to construct an unstyled modal. By using this component, I get focus control and good accessibility out of the box.
 - Use CSS modules.
 - Use hooks like useEffect and useRef, in combination with forwardRef to make the textarea grow automatically and move focus to the textarea when appropriate
+- Use a custom hook to generalize the functionality to determine if an author is the current user
 - Use Immer to help keep my state immutable
 
 ### Screenshots of my implementation of the desktop layout
