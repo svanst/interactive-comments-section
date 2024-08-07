@@ -3,6 +3,7 @@
     segoe ui, helvetica neue, helvetica, cantarell, ubuntu, roboto, noto, arial,
     sans-serif;
   --ff-body: "Rubik";
+  --fs-200: calc(13 / 16 * 1rem);
   --fs-400: 1rem;
   --fs-600: calc(20 / 16 * 1rem);
   --clr-neutral-100: hsl(0deg 0% 100%);

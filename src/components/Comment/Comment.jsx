@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { CommentsContext } from "../../contexts/commentsContext";
 import CommentList from "../CommentList/CommentList";
 
+import useIsCurrentUser from "../../hooks/UseIsCurrentUser";
 import Avatar from "../Avatar/Avatar";
 import CommentActions from "../CommentActions/CommentActions";
 import CommentForm from "../CommentForm/CommentForm";
@@ -19,6 +20,8 @@ function Comment({
   rating,
 }) {
   const { getReplies } = useContext(CommentsContext);
+  const isCurrentUser = useIsCurrentUser(author);
+
   const [mode, setMode] = useState(modes.read); // read | edit | reply
   const [textareaValue, setTextareaValue] = useState("");
   const textareaRef = useRef(null);
@@ -54,7 +57,8 @@ function Comment({
           <address className="fw-bold clr-neutral-700  font-style-normal">
             {author}
           </address>
-          <time dateTime="">{date}</time>
+          {isCurrentUser && <span className={styles.badge}>you</span>}
+          <span>{date}</span>
         </div>
         {mode === modes.edit ? (
           <CommentForm

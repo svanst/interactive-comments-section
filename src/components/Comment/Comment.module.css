@@ -28,6 +28,10 @@
   gap: 1rem;
   align-items: center;
 
+  picture {
+    flex: none;
+  }
+
   img {
     width: 32px;
     height: 32px;
@@ -86,4 +90,16 @@
       content: "";
     }
   }
+}
+
+.badge {
+  display: inline-block;
+  background-color: var(--clr-primary);
+  color: var(--clr-neutral-100);
+  font-style: var(--fs-200);
+  font-size: var(--fs-200);
+  font-weight: 500;
+  padding-inline: 6px;
+  border-radius: 2px;
+  margin-left: -3px;
 }

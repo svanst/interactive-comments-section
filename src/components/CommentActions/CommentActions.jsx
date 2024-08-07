@@ -13,12 +13,12 @@ import {
   ModalClose,
   ModalTitle,
 } from "../Modal/Modal";
+import useIsCurrentUser from "../../hooks/UseIsCurrentUser";
 
 function CommentActions({ author, commentID, mode, changeMode }) {
   const { onDeleteComment } = useContext(CommentsContext);
-  const { currentUser } = useContext(CurrentUserContext);
+  const isCurrentUser = useIsCurrentUser(author);
 
-  const isCurrentUser = author === currentUser.username;
   return (
     <div className={styles.actions}>
       {isCurrentUser ? (

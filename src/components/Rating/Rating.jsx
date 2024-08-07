@@ -6,13 +6,12 @@ import { CommentsContext } from "../../contexts/commentsContext";
 import Button from "../Button/Button";
 import { IconMinus, IconPlus } from "../Icon/Icon";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
+import useIsCurrentUser from "../../hooks/UseIsCurrentUser";
 
 function Rating({ className, commentID, score, author }) {
   const { onIncreaseRating, onDecreaseRating } = useContext(CommentsContext);
-  const { currentUser } = useContext(CurrentUserContext);
+  const isCurrentUser = useIsCurrentUser(author);
   const [initialRating] = useState(score);
-
-  const isCurrentUser = author === currentUser.username;
 
   const handleIncrease = () => {
     if (score === initialRating + 1) {
